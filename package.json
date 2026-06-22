@@ -1,0 +1,13 @@
+{
+  "name": "fiori-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SAP Fiori freestyle application with SAPUI5",
+  "scripts": {
+    "start": "ui5 serve -o index.html",
+    "build": "ui5 build --clean-dest"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^4.0.6"
+  }
+}

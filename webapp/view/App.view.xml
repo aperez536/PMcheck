@@ -1,0 +1,184 @@
+<mvc:View
+  controllerName="com.demo.fioriapp.controller.App"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc"
+>
+  <App>
+    <Page showHeader="false" class="dashboardPage">
+      <content>
+        <VBox class="dashboardShell" renderType="Bare">
+          <HBox class="dashboardTopBar" justifyContent="SpaceBetween" alignItems="Center">
+            <VBox>
+              <Title text="PM OT Trazabilidad" level="H1" class="dashboardTitle" />
+              <Text text="Seguimiento mensual de ordenes, desviaciones y criticidad por centro" class="dashboardSubtitle" />
+            </VBox>
+            <HBox class="dashboardTopIcons" alignItems="Center">
+              <core:Icon src="sap-icon://search" />
+              <core:Icon src="sap-icon://hint" />
+              <core:Icon src="sap-icon://notification" />
+              <core:Icon src="sap-icon://person-placeholder" />
+            </HBox>
+          </HBox>
+
+          <HBox class="filterBar" wrap="Wrap" fitContainer="true" justifyContent="SpaceBetween">
+            <VBox class="filterField">
+              <Label text="Centro" />
+              <Select selectedKey="{dashboard>/filters/center}" width="100%" change=".onSelectCenterChange">
+                <core:Item key="Todos" text="Todos" />
+                <core:Item key="Centro A" text="Centro A" />
+                <core:Item key="Centro B" text="Centro B" />
+                <core:Item key="Centro C" text="Centro C" />
+              </Select>
+            </VBox>
+            <VBox class="filterField">
+              <Label text="Planta" />
+              <Select selectedKey="{dashboard>/filters/plant}" width="100%">
+                <core:Item key="Todas" text="Todas" />
+                <core:Item key="Planta 1" text="Planta 1" />
+                <core:Item key="Planta 2" text="Planta 2" />
+              </Select>
+            </VBox>
+            <VBox class="filterField">
+              <Label text="Equipo" />
+              <Select selectedKey="{dashboard>/filters/equipment}" width="100%">
+                <core:Item key="Todos" text="Todos" />
+                <core:Item key="PV-101" text="PV-101" />
+                <core:Item key="BP-202" text="BP-202" />
+                <core:Item key="BP-201" text="BP-201" />
+                <core:Item key="BP-401" text="BP-401" />
+                <core:Item key="CP-301" text="CP-301" />
+                <core:Item key="CP-302" text="CP-302" />
+                <core:Item key="EP-101" text="EP-101" />
+                <core:Item key="EP-102" text="EP-102" />
+              </Select>
+            </VBox>
+            <VBox class="filterField">
+              <Label text="Variable" />
+              <Select selectedKey="{dashboard>/filters/variable}" width="100%">
+                <core:Item key="Presion" text="Presion" />
+                <core:Item key="Temperatura" text="Temperatura" />
+                <core:Item key="Vibracion" text="Vibracion" />
+              </Select>
+            </VBox>
+            <VBox class="filterField filterDate">
+              <Label text="Desde" />
+              <DatePicker value="{dashboard>/filters/from}" width="100%" displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" />
+            </VBox>
+            <VBox class="filterField filterDate">
+              <Label text="Hasta" />
+              <DatePicker value="{dashboard>/filters/to}" width="100%" displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" />
+            </VBox>
+            <HBox class="filterActions" alignItems="End">
+              <Button text="Buscar" type="Emphasized" press=".onBuscarButtonPress" />
+              <Button text="Limpiar" type="Transparent" press=".onLimpiarButtonPress" />
+            </HBox>
+          </HBox>
+
+          <HBox class="dashboardFilterStatus" justifyContent="SpaceBetween" alignItems="Center">
+            <ObjectStatus text="{dashboard>/filterSummary}" state="Information" />
+            <Text text="{dashboard>/lastUpdated}" />
+          </HBox>
+
+          <HBox class="kpiGrid" wrap="Wrap" fitContainer="true">
+            <VBox class="kpiCard kpiBlue">
+              <core:Icon src="sap-icon://activity-items" class="kpiIcon" />
+              <Text text="OT PM Mes" class="kpiLabel" />
+              <Title text="{dashboard>/kpis/otMonth}" level="H2" class="kpiValue" />
+              <Text text="OT ejecutadas" class="kpiMeta" />
+            </VBox>
+            <VBox class="kpiCard kpiOrange">
+              <core:Icon src="sap-icon://warning" class="kpiIcon" />
+              <Text text="% Fuera de Rango" class="kpiLabel" />
+              <Title text="{dashboard>/kpis/outOfRange}%" level="H2" class="kpiValue" />
+              <Text text="vs. mes anterior" class="kpiMeta" />
+            </VBox>
+            <VBox class="kpiCard kpiGreen">
+              <core:Icon src="sap-icon://business-objects-experience" class="kpiIcon" />
+              <Text text="Promedio Mensual" class="kpiLabel" />
+              <Title text="{dashboard>/kpis/monthlyAverage}" level="H2" class="kpiValue" />
+              <Text text="Unidad: bar" class="kpiMeta" />
+            </VBox>
+            <VBox class="kpiCard kpiRed">
+              <core:Icon src="sap-icon://error" class="kpiIcon" />
+              <Text text="Equipos Criticos" class="kpiLabel" />
+              <Title text="{dashboard>/kpis/criticalEquipments}" level="H2" class="kpiValue" />
+              <Text text="Requieren accion" class="kpiMeta" />
+            </VBox>
+          </HBox>
+
+          <HBox class="contentGrid" wrap="Wrap" fitContainer="true">
+            <Panel headerText="Tendencia mensual por Centro" class="dashboardPanel chartPanel">
+              <content>
+                <Image src="{dashboard>/trendChart}" densityAware="false" decorative="true" class="dashboardChartImage" />
+              </content>
+            </Panel>
+
+            <Panel headerText="Distribucion Min / Promedio / Max por mes" class="dashboardPanel barsPanel">
+              <content>
+                <Image src="{dashboard>/distributionChart}" densityAware="false" decorative="true" class="dashboardChartImage" />
+              </content>
+            </Panel>
+
+            <Panel headerText="Heatmap: Centro vs Equipo (Estado)" class="dashboardPanel heatmapPanel">
+              <content>
+                <Image src="{dashboard>/heatmapChart}" densityAware="false" decorative="true" class="dashboardHeatmapImage" />
+                <HBox class="heatmapLegend" alignItems="Center" wrap="Wrap">
+                  <Text text="Leyenda" class="heatmapLegendTitle" />
+                  <HBox class="heatmapLegendItem" alignItems="Center">
+                    <core:Icon src="sap-icon://circle-task" class="heatmapLegendDot heatmapLowDot" />
+                    <Text text="Normal" />
+                  </HBox>
+                  <HBox class="heatmapLegendItem" alignItems="Center">
+                    <core:Icon src="sap-icon://circle-task" class="heatmapLegendDot heatmapMidDot" />
+                    <Text text="Advertencia" />
+                  </HBox>
+                  <HBox class="heatmapLegendItem" alignItems="Center">
+                    <core:Icon src="sap-icon://circle-task" class="heatmapLegendDot heatmapHighDot" />
+                    <Text text="Fuera de rango" />
+                  </HBox>
+                </HBox>
+              </content>
+            </Panel>
+
+            <Panel headerText="Trazabilidad OT PM" class="dashboardPanel tracePanel">
+              <content>
+                <Table items="{dashboard>/traceability}" growing="true" growingThreshold="5">
+                  <columns>
+                    <Column><Text text="OT" /></Column>
+                    <Column><Text text="Fecha" /></Column>
+                    <Column><Text text="Centro" /></Column>
+                    <Column><Text text="Equipo" /></Column>
+                    <Column><Text text="Variable" /></Column>
+                    <Column><Text text="Valor" /></Column>
+                    <Column><Text text="Rango" /></Column>
+                    <Column><Text text="Desvio" /></Column>
+                    <Column><Text text="Estado" /></Column>
+                    <Column><Text text="Accion" /></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{dashboard>ot}" />
+                        <Text text="{dashboard>date}" />
+                        <Text text="{dashboard>center}" />
+                        <Text text="{dashboard>equipment}" />
+                        <Text text="{dashboard>variable}" />
+                        <Text text="{dashboard>value}" />
+                        <Text text="{dashboard>range}" />
+                        <Text text="{dashboard>deviation}" />
+                        <ObjectStatus text="{dashboard>state}" state="{dashboard>statusState}" />
+                        <Text text="{dashboard>action}" />
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </content>
+            </Panel>
+          </HBox>
+        </VBox>
+      </content>
+    </Page>
+  </App>
+</mvc:View>

@@ -1,0 +1,256 @@
+.sapMPage {
+  background: linear-gradient(180deg, #f7f9fb 0%, #eef3f8 100%);
+}
+
+.dashboardPage .sapMPageEnableScrolling {
+  padding: 1rem;
+}
+
+.dashboardShell {
+  gap: 1rem;
+}
+
+.dashboardTopBar {
+  padding: 0.25rem 0.25rem 0.75rem;
+}
+
+.dashboardTitle {
+  color: #0f2742;
+}
+
+.dashboardSubtitle {
+  color: #617286;
+}
+
+.dashboardTopIcons {
+  gap: 0.75rem;
+  color: #4d6179;
+  font-size: 1.1rem;
+}
+
+.filterBar,
+.kpiGrid,
+.contentGrid {
+  gap: 0.75rem;
+}
+
+.filterField {
+  min-width: 11rem;
+  flex: 1 1 11rem;
+}
+
+.filterDate {
+  min-width: 10rem;
+}
+
+.filterActions {
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.kpiCard {
+  position: relative;
+  min-width: 14rem;
+  flex: 1 1 14rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(17, 43, 76, 0.08);
+  border: 1px solid rgba(95, 123, 150, 0.12);
+  gap: 0.35rem;
+}
+
+.kpiIcon {
+  font-size: 1.4rem;
+  padding: 0.4rem;
+  border-radius: 999px;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: #fff;
+}
+
+.kpiBlue .kpiIcon { background: #3b82f6; }
+.kpiOrange .kpiIcon { background: #f59e0b; }
+.kpiGreen .kpiIcon { background: #10b981; }
+.kpiRed .kpiIcon { background: #ef4444; }
+
+.kpiLabel {
+  color: #516377;
+  font-size: 0.92rem;
+}
+
+.kpiValue {
+  color: #10263d;
+}
+
+.kpiMeta {
+  color: #758499;
+  font-size: 0.82rem;
+}
+
+.dashboardPanel {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(17, 43, 76, 0.08);
+}
+
+.dashboardPanel .sapMPanelHdr {
+  background: linear-gradient(90deg, #ffffff 0%, #f7fafc 100%);
+}
+
+.chartPanel,
+.barsPanel,
+.heatmapPanel,
+.tracePanel {
+  flex: 1 1 44rem;
+}
+
+.chartArea,
+.barChart,
+.heatmapTable {
+  gap: 0.75rem;
+}
+
+.chartLegend,
+.heatmapLegend {
+  gap: 1rem;
+  color: #5b6d80;
+  align-items: center;
+}
+
+.heatmapLegendTitle {
+  font-weight: 700;
+  color: #1f2f44;
+  margin-right: 0.25rem;
+}
+
+.legendSwatch,
+.heatmapLegendItem {
+  display: inline-flex;
+}
+
+.heatmapLegendItem {
+  gap: 0.4rem;
+}
+
+.heatmapLegendDot {
+  font-size: 0.95rem;
+}
+
+.heatmapLowDot { color: #22c55e; }
+.heatmapMidDot { color: #f59e0b; }
+.heatmapHighDot { color: #ef4444; }
+
+.legendBlue { background: #3b82f6; }
+.legendGreen { background: #10b981; }
+.legendRed { background: #ef4444; }
+
+.lineChart,
+.barGroup,
+.heatmapHeader,
+.heatmapRow {
+  gap: 0.4rem;
+}
+
+.lineChartMonth {
+  flex: 1 1 5rem;
+  min-width: 3rem;
+}
+
+.lineChartPlot {
+  height: 7rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.12) 0%, rgba(16, 185, 129, 0.08) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.lineChartBand,
+.lineChartBand2 {
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  border-top: 2px solid rgba(59, 130, 246, 0.65);
+  top: 45%;
+}
+
+.lineChartBand2 {
+  border-top-color: rgba(16, 185, 129, 0.65);
+  top: 62%;
+}
+
+.lineChartLabel,
+.barLabel,
+.heatmapCell {
+  font-size: 0.8rem;
+  color: #4d6179;
+}
+
+.barColumn {
+  align-items: center;
+  width: 33%;
+}
+
+.bar {
+  width: 72%;
+  border-radius: 0.65rem 0.65rem 0.25rem 0.25rem;
+  min-height: 1rem;
+}
+
+.barMin { height: 4rem; background: #93c5fd; }
+.barAvg { height: 5.5rem; background: #2563eb; }
+.barMax { height: 7rem; background: #60a5fa; }
+
+.heatmapHeader,
+.heatmapRow {
+  display: grid;
+  grid-template-columns: 1.35fr repeat(6, 1fr);
+  gap: 0.4rem;
+}
+
+.heatmapRowHeader {
+  font-weight: 600;
+  color: #21364f;
+}
+
+.heatmapLow,
+.heatmapMid,
+.heatmapHigh {
+  min-height: 2rem;
+  border-radius: 0.55rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+}
+
+.heatmapLow { background: #dcfce7; color: #166534; }
+.heatmapMid { background: #fef3c7; color: #92400e; }
+.heatmapHigh { background: #fee2e2; color: #991b1b; }
+
+.tracePanel .sapMTable {
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .dashboardPage .sapMPageEnableScrolling {
+    padding: 0.5rem;
+  }
+
+  .dashboardTopBar,
+  .filterBar,
+  .contentGrid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterActions {
+    justify-content: flex-start;
+  }
+
+  .heatmapHeader,
+  .heatmapRow {
+    grid-template-columns: 1fr repeat(3, 1fr);
+    overflow-x: auto;
+  }
+}
