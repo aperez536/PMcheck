@@ -34,7 +34,7 @@
             </VBox>
             <VBox class="filterField">
               <Label text="Planta" />
-              <Select selectedKey="{dashboard>/filters/plant}" width="100%">
+              <Select selectedKey="{dashboard>/filters/plant}" width="100%" change=".onFilterChange">
                 <core:Item key="Todas" text="Todas" />
                 <core:Item key="Planta 1" text="Planta 1" />
                 <core:Item key="Planta 2" text="Planta 2" />
@@ -42,7 +42,7 @@
             </VBox>
             <VBox class="filterField">
               <Label text="Equipo" />
-              <Select selectedKey="{dashboard>/filters/equipment}" width="100%">
+              <Select selectedKey="{dashboard>/filters/equipment}" width="100%" change=".onFilterChange">
                 <core:Item key="Todos" text="Todos" />
                 <core:Item key="PV-101" text="PV-101" />
                 <core:Item key="BP-202" text="BP-202" />
@@ -56,7 +56,7 @@
             </VBox>
             <VBox class="filterField">
               <Label text="Variable" />
-              <Select selectedKey="{dashboard>/filters/variable}" width="100%">
+              <Select selectedKey="{dashboard>/filters/variable}" width="100%" change=".onFilterChange">
                 <core:Item key="Presion" text="Presion" />
                 <core:Item key="Temperatura" text="Temperatura" />
                 <core:Item key="Vibracion" text="Vibracion" />
@@ -64,11 +64,11 @@
             </VBox>
             <VBox class="filterField filterDate">
               <Label text="Desde" />
-              <DatePicker value="{dashboard>/filters/from}" width="100%" displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" />
+              <DatePicker value="{dashboard>/filters/from}" width="100%" displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" change=".onFilterChange" />
             </VBox>
             <VBox class="filterField filterDate">
               <Label text="Hasta" />
-              <DatePicker value="{dashboard>/filters/to}" width="100%" displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" />
+              <DatePicker value="{dashboard>/filters/to}" width="100%" displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" change=".onFilterChange" />
             </VBox>
             <HBox class="filterActions" alignItems="End">
               <Button text="Buscar" type="Emphasized" press=".onBuscarButtonPress" />

@@ -511,10 +511,12 @@ sap.ui.define([
           var item = row.equipment.filter(function (equipmentItem) {
             return equipmentItem.name === columnName;
           })[0];
-          var state = item ? item.state : "success";
+          if (!item) {
+            return '';
+          }
           var cx = left + columnIndex * cellWidth + 14;
           var cy = rowY + 12;
-          return '<circle cx="' + cx + '" cy="' + cy + '" r="8" fill="' + colors[state] + '" />';
+          return '<circle cx="' + cx + '" cy="' + cy + '" r="8" fill="' + colors[item.state] + '" />';
         }).join("");
 
         return '<text x="24" y="' + (rowY + 16) + '" fill="#3b4a63" font-size="12" font-family="Segoe UI, Arial" font-weight="600">' + escapeXml(row.center) + '</text>' + circles;
@@ -585,6 +587,10 @@ sap.ui.define([
 
       this.getView().setModel(oDashboardModel, "dashboard");
       updateModel(oDashboardModel);
+    },
+
+    onFilterChange: function () {
+      updateModel(this.getView().getModel("dashboard"));
     },
 
     onSelectCenterChange: function () {
