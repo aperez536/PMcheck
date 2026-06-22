@@ -311,10 +311,14 @@ sap.ui.define([
         equipment: equipmentNames.map(function (equipmentName) {
           return {
             name: equipmentName,
-            state: equipmentMap[equipmentName] || "success"
+            state: equipmentMap[equipmentName]
           };
+        }).filter(function (item) {
+          return item.state !== undefined;
         })
       };
+    }).filter(function (row) {
+      return row.equipment.length > 0;
     });
   }
 
